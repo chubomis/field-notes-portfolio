@@ -263,6 +263,17 @@
   & img {
     width: 100%;
   }
+
+  & button {
+    transform: translateY(0) scale(1);
+    transition: transform 250ms ease, filter 250ms ease;
+  }
+
+  & button:hover,
+  & button:focus-visible {
+    transform: translateY(-2px) scale(1.015);
+    filter: drop-shadow(0 5px 4px var(--collage-shadow));
+  }
 }
 
 @media (max-width: 700px) {
