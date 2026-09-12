@@ -59,6 +59,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-sheet: var(--sheet);
 }
 
 :root {
@@ -95,6 +96,8 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sheet: oklch(0.992 0.002 80);
+  --collage-shadow: oklch(0.15 0.015 260 / 0.2);
 }
 
 .dark {
@@ -140,5 +143,176 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    margin: 0;
+  }
+
+  button {
+    font: inherit;
+  }
+}
+
+@utility fieldnotes-scene {
+  --pointer-x: 0;
+  --pointer-y: 0;
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--sheet);
+}
+
+@utility fieldnotes-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+  pointer-events: none;
+  user-select: none;
+}
+
+@utility fieldnotes-title {
+  position: absolute;
+  z-index: 2;
+  top: 5.5%;
+  left: 50%;
+  width: min(72vw, 68rem);
+  transform: translate3d(calc(-50% + var(--pointer-x) * 3px), calc(var(--pointer-y) * 2px), 0);
+  transition: transform 180ms ease-out;
+  pointer-events: none;
+  user-select: none;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@utility project-image {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), filter 300ms ease;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    z-index: 5;
+    filter: drop-shadow(0 18px 16px var(--collage-shadow));
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--ring);
+  }
+}
+
+@utility project-image-colorful {
+  left: 26%;
+  bottom: 5%;
+  width: clamp(18rem, 34vw, 36rem);
+  transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 7px), 0);
+
+  &:hover,
+  &:focus-visible {
+    transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 7px - 10px), 28px) rotate(-1deg) scale(1.045);
+  }
+}
+
+@utility project-image-snowy {
+  right: 7%;
+  top: 39%;
+  width: clamp(20rem, 37vw, 39rem);
+  transform: translate3d(calc(var(--pointer-x) * -8px), calc(var(--pointer-y) * -6px), 0);
+
+  &:hover,
+  &:focus-visible {
+    transform: translate3d(calc(var(--pointer-x) * -8px), calc(var(--pointer-y) * -6px - 10px), 28px) rotate(1deg) scale(1.04);
+  }
+}
+
+@utility fieldnotes-nav {
+  position: absolute;
+  z-index: 6;
+  left: clamp(1rem, 2.4vw, 2.5rem);
+  bottom: clamp(1rem, 3.5vh, 2.5rem);
+  display: flex;
+  width: clamp(7.5rem, 12vw, 11rem);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.35rem, 0.7vh, 0.65rem);
+
+  & button,
+  & img {
+    width: 100%;
+  }
+
+  & button {
+    transform: translateY(0) scale(1);
+    transition: transform 250ms ease, filter 250ms ease;
+  }
+
+  & button:hover,
+  & button:focus-visible {
+    transform: translateY(-2px) scale(1.015);
+    filter: drop-shadow(0 5px 4px var(--collage-shadow));
+  }
+}
+
+@media (max-width: 700px) {
+  .fieldnotes-background {
+    opacity: 0.58;
+  }
+
+  .fieldnotes-title {
+    top: 4%;
+    width: 94vw;
+  }
+
+  .project-image-colorful {
+    left: 24%;
+    bottom: 24%;
+    width: 72vw;
+  }
+
+  .project-image-snowy {
+    top: 31%;
+    right: 3%;
+    width: 72vw;
+  }
+
+  .fieldnotes-nav {
+    width: 7.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fieldnotes-title,
+  .project-image,
+  .fieldnotes-nav button {
+    transition-duration: 0.01ms;
+    transform: none;
+  }
+
+  .project-image:hover,
+  .project-image:focus-visible {
+    transform: none;
   }
 }

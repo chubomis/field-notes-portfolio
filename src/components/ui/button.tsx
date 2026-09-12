@@ -16,6 +16,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        collage:
+          "h-auto justify-start rounded-none bg-transparent p-0 shadow-none transition-[transform,filter] duration-250 ease-out hover:-translate-y-0.5 hover:scale-[1.015] hover:bg-transparent hover:drop-shadow-[0_5px_4px_var(--collage-shadow)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
       },
       size: {
         default: "h-9 px-4 py-2",
