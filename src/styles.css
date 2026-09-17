@@ -4,20 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -26,82 +12,116 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
+
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
   --color-sheet: var(--sheet);
 }
 
 :root {
   --radius: 0.625rem;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
+
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
+
   --primary: oklch(0.208 0.042 265.755);
   --primary-foreground: oklch(0.984 0.003 247.858);
+
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
+
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
+
   --accent: oklch(0.968 0.007 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
+
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
+
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
+
   --sidebar-primary: oklch(0.208 0.042 265.755);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+
   --sidebar-accent: oklch(0.968 0.007 247.896);
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
   --sheet: oklch(0.992 0.002 80);
+
   --collage-shadow: oklch(0.15 0.015 260 / 0.2);
+
   --project-paper: oklch(0.992 0.003 80);
   --project-ink: oklch(0.16 0.012 260);
+
   --project-pink: oklch(0.72 0.18 345);
   --project-blue: oklch(0.7 0.12 235);
+
   --project-rule: oklch(0.82 0.01 260);
   --project-shadow: oklch(0.2 0.02 260 / 0.18);
 }
@@ -109,34 +129,47 @@
 .dark {
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
+
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
+
   --popover: oklch(0.208 0.042 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
+
   --primary: oklch(0.929 0.013 255.508);
   --primary-foreground: oklch(0.208 0.042 265.755);
+
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
+
   --muted: oklch(0.279 0.041 260.031);
   --muted-foreground: oklch(0.704 0.04 256.788);
+
   --accent: oklch(0.279 0.041 260.031);
   --accent-foreground: oklch(0.984 0.003 247.858);
+
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
+
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+
   --sidebar: oklch(0.208 0.042 265.755);
   --sidebar-foreground: oklch(0.984 0.003 247.858);
+
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+
   --sidebar-accent: oklch(0.279 0.041 260.031);
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
@@ -160,10 +193,13 @@
 @utility fieldnotes-scene {
   --pointer-x: 0;
   --pointer-y: 0;
+
   position: relative;
   min-height: 100svh;
+
   overflow: hidden;
   isolation: isolate;
+
   background-color: var(--sheet);
 }
 
@@ -174,28 +210,44 @@
 @utility fieldnotes-background {
   position: absolute;
   inset: 0;
+
   z-index: -2;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   opacity: 0.72;
+
   pointer-events: none;
   user-select: none;
 }
 
 @utility fieldnotes-title {
   position: absolute;
+
   z-index: 2;
+
   top: 5.5%;
   left: 50%;
+
   width: min(72vw, 68rem);
-  transform: translate3d(calc(-50% + var(--pointer-x) * 3px), calc(var(--pointer-y) * 2px), 0);
+
+  transform: translate3d(
+    calc(-50% + var(--pointer-x) * 3px),
+    calc(var(--pointer-y) * 2px),
+    0
+  );
+
   transition: transform 180ms ease-out;
+
   pointer-events: none;
   user-select: none;
 
   & img {
     display: block;
+
     width: 100%;
     height: auto;
   }
@@ -203,21 +255,34 @@
 
 @utility project-image {
   position: absolute;
+
   z-index: 3;
+
   margin: 0;
+
   appearance: none;
+
   border: 0;
   border-radius: 0;
+
   background: transparent;
+
   padding: 0;
+
   cursor: pointer;
+
   transform-style: preserve-3d;
-  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), filter 300ms ease;
+
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 300ms ease;
 
   & img {
     display: block;
+
     width: 100%;
     height: auto;
+
     pointer-events: none;
     user-select: none;
   }
@@ -225,7 +290,11 @@
   &:hover,
   &:focus-visible {
     z-index: 5;
-    filter: drop-shadow(0 18px 16px var(--collage-shadow));
+
+    filter: drop-shadow(
+      0 18px 16px var(--collage-shadow)
+    );
+
     outline: none;
   }
 
@@ -237,36 +306,68 @@
 @utility project-image-colorful {
   left: 26%;
   bottom: 5%;
+
   width: clamp(18rem, 34vw, 36rem);
-  transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 7px), 0);
+
+  transform: translate3d(
+    calc(var(--pointer-x) * 10px),
+    calc(var(--pointer-y) * 7px),
+    0
+  );
 
   &:hover,
   &:focus-visible {
-    transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 7px - 10px), 28px) rotate(-1deg) scale(1.045);
+    transform:
+      translate3d(
+        calc(var(--pointer-x) * 10px),
+        calc(var(--pointer-y) * 7px - 10px),
+        28px
+      )
+      rotate(-1deg)
+      scale(1.045);
   }
 }
 
 @utility project-image-snowy {
   right: 7%;
   top: 39%;
+
   width: clamp(20rem, 37vw, 39rem);
-  transform: translate3d(calc(var(--pointer-x) * -8px), calc(var(--pointer-y) * -6px), 0);
+
+  transform: translate3d(
+    calc(var(--pointer-x) * -8px),
+    calc(var(--pointer-y) * -6px),
+    0
+  );
 
   &:hover,
   &:focus-visible {
-    transform: translate3d(calc(var(--pointer-x) * -8px), calc(var(--pointer-y) * -6px - 10px), 28px) rotate(1deg) scale(1.04);
+    transform:
+      translate3d(
+        calc(var(--pointer-x) * -8px),
+        calc(var(--pointer-y) * -6px - 10px),
+        28px
+      )
+      rotate(1deg)
+      scale(1.04);
   }
 }
 
 @utility fieldnotes-nav {
   position: absolute;
+
   z-index: 6;
+
   left: clamp(1rem, 2.4vw, 2.5rem);
   bottom: clamp(1rem, 3.5vh, 2.5rem);
+
   display: flex;
+
   width: clamp(7.5rem, 12vw, 11rem);
+
   flex-direction: column;
   align-items: flex-start;
+
   gap: clamp(0.35rem, 0.7vh, 0.65rem);
 
   & button,
@@ -276,13 +377,19 @@
 
   & button {
     transform: translateY(0) scale(1);
-    transition: transform 250ms ease, filter 250ms ease;
+
+    transition:
+      transform 250ms ease,
+      filter 250ms ease;
   }
 
   & button:hover,
   & button:focus-visible {
     transform: translateY(-2px) scale(1.015);
-    filter: drop-shadow(0 5px 4px var(--collage-shadow));
+
+    filter: drop-shadow(
+      0 5px 4px var(--collage-shadow)
+    );
   }
 }
 
@@ -329,65 +436,117 @@
 
 .funky-project {
   --project-progress: 0;
+
   position: relative;
+
   overflow: clip;
+
   color: var(--project-ink);
+
   background-color: var(--project-paper);
 }
 
 .funky-project::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   pointer-events: none;
+
   opacity: 0.2;
-  background-image: linear-gradient(var(--project-rule) 1px, transparent 1px), linear-gradient(90deg, var(--project-rule) 1px, transparent 1px);
+
+  background-image:
+    linear-gradient(
+      var(--project-rule) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      var(--project-rule) 1px,
+      transparent 1px
+    );
+
   background-size: 4rem 4rem;
-  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
 }
 
 .project-progress {
   position: fixed;
+
   z-index: 20;
+
   top: 50%;
   right: clamp(0.75rem, 1.8vw, 2rem);
+
   width: 2px;
   height: 18vh;
+
   transform: translateY(-50%);
+
   background: var(--project-rule);
 }
 
 .project-progress span {
   display: block;
+
   width: 100%;
-  height: calc(var(--project-progress) * 100%);
+
+  height: calc(
+    var(--project-progress) * 100%
+  );
+
   background: var(--project-pink);
 }
 
 .funky-intro {
   position: relative;
+
   z-index: 1;
+
   width: min(100%, 120rem);
+
   min-height: 150vh;
+
   margin-inline: auto;
-  padding: clamp(7rem, 14vw, 13rem) clamp(1.25rem, 4.5vw, 5rem) clamp(8rem, 14vw, 14rem);
+
+  padding:
+    clamp(7rem, 14vw, 13rem)
+    clamp(1.25rem, 4.5vw, 5rem)
+    clamp(8rem, 14vw, 14rem);
 }
 
 .project-kicker,
 .process-label,
 figcaption {
   margin: 0;
+
   color: var(--project-ink);
+
   font-size: 0.68rem;
   font-weight: 700;
+
   line-height: 1.2;
+
   letter-spacing: 0;
+
   text-transform: uppercase;
 }
 
 .funky-title {
   width: min(45rem, 70vw);
-  margin: clamp(2rem, 5vw, 5rem) auto clamp(4rem, 8vw, 8rem);
+
+  margin:
+    clamp(2rem, 5vw, 5rem)
+    auto
+    clamp(4rem, 8vw, 8rem);
 }
 
 .funky-title img,
@@ -396,6 +555,7 @@ figcaption {
 .study img,
 .final-render img {
   display: block;
+
   width: 100%;
   height: auto;
 }
@@ -407,133 +567,392 @@ figcaption {
 .process-overview figcaption,
 .study figcaption {
   margin-top: 0.75rem;
+
   padding-top: 0.65rem;
-  border-top: 1px solid var(--project-rule);
+
+  border-top:
+    1px solid
+    var(--project-rule);
 }
 
 .project-blurb {
   width: min(80rem, 92vw);
-  margin: clamp(5rem, 10vw, 10rem) auto 0;
+
+  margin:
+    clamp(5rem, 10vw, 10rem)
+    auto
+    0;
 }
 
 [data-reveal] {
   opacity: 0;
+
   transform: translateY(2.5rem);
-  transition: opacity 800ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition:
+    opacity 800ms ease,
+    transform 900ms
+      cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-reveal][data-visible="true"] {
   opacity: 1;
+
   transform: translateY(0);
 }
 
-.funky-title[data-reveal] { transition-delay: 80ms; }
-.process-overview[data-reveal] { transition-delay: 160ms; }
-.project-blurb[data-reveal] { transition-delay: 80ms; }
+.funky-title[data-reveal] {
+  transition-delay: 80ms;
+}
+
+.process-overview[data-reveal] {
+  transition-delay: 160ms;
+}
+
+.project-blurb[data-reveal] {
+  transition-delay: 80ms;
+}
 
 .visual-hover {
   transform-origin: center;
-  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), filter 360ms ease;
+
+  transition:
+    transform 360ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    filter 360ms ease;
 }
 
 .visual-hover:hover {
-  transform: translateY(-0.5rem) scale(1.012) rotate(0.15deg);
-  filter: brightness(1.02) drop-shadow(0 1.25rem 1rem var(--project-shadow));
+  transform:
+    translateY(-0.5rem)
+    scale(1.012)
+    rotate(0.15deg);
+
+  filter:
+    brightness(1.02)
+    drop-shadow(
+      0 1.25rem 1rem
+      var(--project-shadow)
+    );
 }
+
+/* =========================================================
+   SCROLL PROCESS
+   ========================================================= */
 
 .process-story {
   --process-progress: 0;
+  --drawing-progress: 0;
+  --revealed-stages: 0;
+
   position: relative;
+
   z-index: 2;
+
   height: 360vh;
-  background-color: color-mix(in oklab, var(--project-paper) 96%, var(--project-blue));
+
+  background-color:
+    color-mix(
+      in oklab,
+      var(--project-paper) 96%,
+      var(--project-blue)
+    );
 }
 
 .process-sticky {
   position: sticky;
+
   top: 0;
+
   height: 100svh;
+
   overflow: hidden;
 }
 
 .process-label {
   position: absolute;
+
   z-index: 5;
-  top: clamp(1.5rem, 4vw, 3rem);
-  left: clamp(1.25rem, 4.5vw, 5rem);
+
+  top: clamp(
+    1.5rem,
+    4vw,
+    3rem
+  );
+
+  left: clamp(
+    1.25rem,
+    4.5vw,
+    5rem
+  );
 }
+
+/* =========================================================
+   PAPER
+   ========================================================= */
 
 .paper-unroll {
   position: absolute;
+
   z-index: 1;
+
   top: -7vh;
   left: 50%;
+
   width: min(55vw, 43rem);
-  height: calc(27vh + var(--process-progress) * 70vh);
+
+  /*
+   * IMPORTANT:
+   *
+   * Starts at 16vh and travels another 92vh.
+   *
+   * This makes the paper bottom travel at the same
+   * vertical rate as the seven drawing stages.
+   */
+  height: calc(
+    16vh +
+    var(--process-progress) *
+    92vh
+  );
+
   overflow: hidden;
+
   transform: translateX(-50%);
-  filter: drop-shadow(0 1rem 1rem var(--project-shadow));
+
+  filter:
+    drop-shadow(
+      0 1rem 1rem
+      var(--project-shadow)
+    );
 }
 
 .paper-unroll img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: fill;
+
+  pointer-events: none;
+  user-select: none;
 }
+
+/* =========================================================
+   DRAWING
+   ========================================================= */
 
 .axo-reveal {
   position: absolute;
+
   z-index: 2;
+
   top: 7vh;
   left: 50%;
+
   width: min(28vw, 22rem);
-  height: calc(4% + var(--process-progress) * 88%);
+
+  /*
+   * Seven discrete reveal heights.
+   */
+  height: calc(
+    var(--drawing-progress) *
+    92%
+  );
+
   overflow: hidden;
+
   transform: translateX(-50%);
+
+  /*
+   * Small transition gives each stage a soft reveal
+   * without allowing it to race ahead.
+   */
+  transition:
+    height 180ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
 }
 
 .axo-reveal img {
   display: block;
+
   width: 100%;
   height: auto;
+
+  pointer-events: none;
+  user-select: none;
 }
+
+/* =========================================================
+   STAGE NUMBERS
+   ========================================================= */
 
 .stage-index {
   position: absolute;
+
   z-index: 4;
+
   top: 12%;
-  right: clamp(1.5rem, 8vw, 10rem);
+
+  right: clamp(
+    1.5rem,
+    8vw,
+    10rem
+  );
+
   display: grid;
+
   height: 76%;
+
   margin: 0;
   padding: 0;
+
   list-style: none;
+
   align-content: space-between;
+
   font-size: 0.65rem;
   font-weight: 700;
 }
 
 .stage-index li {
-  opacity: clamp(0.12, calc((var(--process-progress) * 7 - var(--stage, 0)) * 1), 1);
+  opacity: 0.12;
+
+  transition:
+    opacity 180ms ease;
 }
-.stage-index li:nth-child(1) { --stage: 0; }
-.stage-index li:nth-child(2) { --stage: 1; }
-.stage-index li:nth-child(3) { --stage: 2; }
-.stage-index li:nth-child(4) { --stage: 3; }
-.stage-index li:nth-child(5) { --stage: 4; }
-.stage-index li:nth-child(6) { --stage: 5; }
-.stage-index li:nth-child(7) { --stage: 6; }
+
+.stage-index li:nth-child(1) {
+  opacity: clamp(
+    0.12,
+    calc(
+      var(--revealed-stages) *
+      10
+    ),
+    1
+  );
+}
+
+.stage-index li:nth-child(2) {
+  opacity: clamp(
+    0.12,
+    calc(
+      (
+        var(--revealed-stages) -
+        1
+      ) *
+      10
+    ),
+    1
+  );
+}
+
+.stage-index li:nth-child(3) {
+  opacity: clamp(
+    0.12,
+    calc(
+      (
+        var(--revealed-stages) -
+        2
+      ) *
+      10
+    ),
+    1
+  );
+}
+
+.stage-index li:nth-child(4) {
+  opacity: clamp(
+    0.12,
+    calc(
+      (
+        var(--revealed-stages) -
+        3
+      ) *
+      10
+    ),
+    1
+  );
+}
+
+.stage-index li:nth-child(5) {
+  opacity: clamp(
+    0.12,
+    calc(
+      (
+        var(--revealed-stages) -
+        4
+      ) *
+      10
+    ),
+    1
+  );
+}
+
+.stage-index li:nth-child(6) {
+  opacity: clamp(
+    0.12,
+    calc(
+      (
+        var(--revealed-stages) -
+        5
+      ) *
+      10
+    ),
+    1
+  );
+}
+
+.stage-index li:nth-child(7) {
+  opacity: clamp(
+    0.12,
+    calc(
+      (
+        var(--revealed-stages) -
+        6
+      ) *
+      10
+    ),
+    1
+  );
+}
+
+/* =========================================================
+   SUPPORTING STUDIES
+   ========================================================= */
 
 .supporting-studies {
   position: relative;
+
   z-index: 1;
+
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 3rem);
-  width: min(100%, 105rem);
+
+  grid-template-columns:
+    repeat(
+      12,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    clamp(2rem, 5vw, 6rem)
+    clamp(1rem, 3vw, 3rem);
+
+  width: min(
+    100%,
+    105rem
+  );
+
   margin-inline: auto;
-  padding: clamp(9rem, 15vw, 15rem) clamp(1.25rem, 4.5vw, 5rem);
+
+  padding:
+    clamp(9rem, 15vw, 15rem)
+    clamp(1.25rem, 4.5vw, 5rem);
 }
 
 .study-heading {
@@ -543,10 +962,23 @@ figcaption {
 .study-heading h3,
 .final-copy h3 {
   max-width: 13ch;
-  margin: 1.25rem 0 0;
-  font-size: clamp(2.5rem, 6vw, 6rem);
+
+  margin:
+    1.25rem
+    0
+    0;
+
+  font-size:
+    clamp(
+      2.5rem,
+      6vw,
+      6rem
+    );
+
   font-weight: 800;
+
   line-height: 0.95;
+
   letter-spacing: 0;
 }
 
@@ -554,73 +986,211 @@ figcaption {
   margin: 0;
 }
 
-.study-projections { grid-column: 1 / 9; }
-.study-method { grid-column: 5 / 13; }
-.study-iterations { grid-column: 2 / 11; }
+.study-projections {
+  grid-column: 1 / 9;
+}
+
+.study-method {
+  grid-column: 5 / 13;
+}
+
+.study-iterations {
+  grid-column: 2 / 11;
+}
+
+/* =========================================================
+   FINAL
+   ========================================================= */
 
 .final-outcome {
   position: relative;
+
   z-index: 1;
+
   display: grid;
-  grid-template-columns: minmax(12rem, 0.7fr) minmax(20rem, 1.3fr);
-  gap: clamp(2rem, 7vw, 8rem);
+
+  grid-template-columns:
+    minmax(
+      12rem,
+      0.7fr
+    )
+    minmax(
+      20rem,
+      1.3fr
+    );
+
+  gap:
+    clamp(
+      2rem,
+      7vw,
+      8rem
+    );
+
   align-items: end;
-  width: min(100%, 100rem);
+
+  width: min(
+    100%,
+    100rem
+  );
+
   margin-inline: auto;
-  padding: clamp(7rem, 12vw, 12rem) clamp(1.25rem, 4.5vw, 5rem) clamp(8rem, 14vw, 14rem);
+
+  padding:
+    clamp(7rem, 12vw, 12rem)
+    clamp(1.25rem, 4.5vw, 5rem)
+    clamp(8rem, 14vw, 14rem);
 }
 
 .final-copy {
   position: sticky;
+
   bottom: 4rem;
+
   padding-bottom: 4rem;
 }
 
 .final-render {
   margin: 0;
+
   overflow: hidden;
 }
 
 .final-render figcaption {
   display: flex;
+
   justify-content: space-between;
-  padding: 0.85rem 0.15rem;
-  background: var(--project-paper);
+
+  padding:
+    0.85rem
+    0.15rem;
+
+  background:
+    var(--project-paper);
 }
 
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 700px) {
-  .project-progress { display: none; }
-  .funky-intro { min-height: auto; padding-top: 7rem; }
-  .funky-title { width: 88vw; margin-block: 2.5rem 4rem; }
-  .project-blurb { width: 145vw; margin-left: -25vw; }
-  .process-story { height: 300vh; }
-  .paper-unroll { width: 92vw; }
-  .axo-reveal { top: 11vh; width: 50vw; }
-  .stage-index { right: 1rem; }
-  .supporting-studies { display: block; }
-  .study-heading { margin-bottom: 6rem; }
-  .study { margin-bottom: 6rem; }
-  .study-projections { width: 100%; }
-  .study-method { width: 105%; margin-left: -5%; }
-  .study-iterations { width: 100%; }
-  .final-outcome { display: block; }
-  .final-copy { position: static; margin-bottom: 4rem; }
-  .final-render { width: 100%; }
+  .project-progress {
+    display: none;
+  }
+
+  .funky-intro {
+    min-height: auto;
+
+    padding-top: 7rem;
+  }
+
+  .funky-title {
+    width: 88vw;
+
+    margin-block:
+      2.5rem
+      4rem;
+  }
+
+  .project-blurb {
+    width: 145vw;
+
+    margin-left: -25vw;
+  }
+
+  .process-story {
+    height: 300vh;
+  }
+
+  .paper-unroll {
+    width: 92vw;
+  }
+
+  .axo-reveal {
+    top: 11vh;
+
+    width: 50vw;
+  }
+
+  .stage-index {
+    right: 1rem;
+  }
+
+  .supporting-studies {
+    display: block;
+  }
+
+  .study-heading {
+    margin-bottom: 6rem;
+  }
+
+  .study {
+    margin-bottom: 6rem;
+  }
+
+  .study-projections {
+    width: 100%;
+  }
+
+  .study-method {
+    width: 105%;
+
+    margin-left: -5%;
+  }
+
+  .study-iterations {
+    width: 100%;
+  }
+
+  .final-outcome {
+    display: block;
+  }
+
+  .final-copy {
+    position: static;
+
+    margin-bottom: 4rem;
+  }
+
+  .final-render {
+    width: 100%;
+  }
 }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1;
+
     transform: none;
+
     transition: none;
   }
+
   .visual-hover,
   .visual-hover:hover {
     transform: none;
+
     transition: none;
   }
-  .process-story { height: 160vh; }
-  .paper-unroll { height: 97vh; }
-  .axo-reveal { height: 92%; }
-  .stage-index li { opacity: 1; }
+
+  .process-story {
+    height: 160vh;
+  }
+
+  .paper-unroll {
+    height: 108vh;
+  }
+
+  .axo-reveal {
+    height: 92%;
+
+    transition: none;
+  }
+
+  .stage-index li {
+    opacity: 1;
+  }
 }
