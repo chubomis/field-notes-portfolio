@@ -1,0 +1,632 @@
+/* =========================================================
+   KIRAN'S DIGITAL FIELDNOTES — HOMEPAGE
+   Layout based on Main Page Layout New 2
+   ========================================================= */
+
+/*
+  This file intentionally overrides only the homepage.
+  Project-page styling remains in styles.css.
+*/
+
+.home-page {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: #f8f8f6;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.home-page .home-background {
+  position: absolute;
+  inset: 0;
+
+  z-index: -2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0.9;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* =========================================================
+   MAIN HOMEPAGE CANVAS
+
+   Unlike the previous narrow / portrait canvas, this uses
+   almost the entire screen so the collage can breathe.
+   ========================================================= */
+
+.home-page .home-canvas {
+  position: relative;
+
+  width: min(100vw, 1600px);
+  height: max(100svh, 720px);
+
+  margin-inline: auto;
+
+  aspect-ratio: auto;
+}
+
+
+/* =========================================================
+   KIRAN'S DIGITAL FIELDNOTES TITLE
+   ========================================================= */
+
+.home-page .home-masthead {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 2.5%;
+  left: 50%;
+
+  width: min(44vw, 650px);
+
+  margin: 0;
+
+  transform: translateX(-50%);
+
+  mix-blend-mode: multiply;
+
+  pointer-events: none;
+}
+
+.home-page .home-masthead img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+/* Used if Main Page Title-03.png isn't present */
+.home-page .home-masthead > span {
+  display: block;
+
+  width: 100%;
+
+  color: #111;
+
+  font-size: clamp(30px, 4vw, 68px);
+  font-weight: 900;
+  line-height: 0.85;
+
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.06em;
+}
+
+
+/* =========================================================
+   SOCIAL PHOTOS
+
+   These remain NON-CLICKABLE.
+   Bigger + pushed toward the edges like your PDF reference.
+   ========================================================= */
+
+.home-page .social-photo {
+  position: absolute;
+
+  overflow: hidden;
+
+  margin: 0;
+
+  background: #ddd;
+
+  box-shadow:
+    0 7px 22px rgb(0 0 0 / 8%);
+
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms ease;
+}
+
+.home-page .social-photo:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 14px 32px rgb(0 0 0 / 12%);
+}
+
+.home-page .social-photo > img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------
+   TOP LEFT — TESTING ON THE SITE MODEL
+   --------------------------------------------------------- */
+
+.home-page .social-photo--model {
+  z-index: 2;
+
+  left: 4.8%;
+  top: 14%;
+
+  width: 41%;
+  height: 27%;
+}
+
+.home-page .social-photo--model > img {
+  object-position: center 45%;
+}
+
+
+/* ---------------------------------------------------------
+   BOTTOM LEFT — SITE VISIT
+   Wider crop to match reference instead of portrait.
+   --------------------------------------------------------- */
+
+.home-page .social-photo--site {
+  z-index: 2;
+
+  left: 7.5%;
+  bottom: 1.5%;
+
+  width: 31%;
+  height: 36%;
+
+  aspect-ratio: auto;
+}
+
+.home-page .social-photo--site > img {
+  object-position: center 45%;
+}
+
+
+/* ---------------------------------------------------------
+   BOTTOM RIGHT — LE CORBUSIER
+   --------------------------------------------------------- */
+
+.home-page .social-photo--corbusier {
+  z-index: 2;
+
+  right: 4.5%;
+  bottom: 7%;
+
+  width: 28%;
+  height: 37%;
+
+  aspect-ratio: auto;
+}
+
+.home-page .social-photo--corbusier > img {
+  object-position: center 48%;
+}
+
+
+/* =========================================================
+   PHOTO CAPTIONS
+   ========================================================= */
+
+.home-page .social-photo figcaption {
+  position: absolute;
+
+  z-index: 2;
+
+  color: #fff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(17px, 1.7vw, 28px);
+  font-weight: 900;
+
+  line-height: 0.98;
+
+  letter-spacing: 0.015em;
+
+  text-transform: uppercase;
+
+  text-shadow:
+    0 2px 8px rgb(0 0 0 / 22%);
+}
+
+
+/* top-left photo caption */
+
+.home-page .social-photo--model figcaption {
+  right: 4%;
+  bottom: 5%;
+
+  text-align: left;
+}
+
+
+/* site visit caption */
+
+.home-page .social-photo--site figcaption {
+  top: 4%;
+  left: 25%;
+
+  font-size: clamp(16px, 1.5vw, 25px);
+}
+
+
+/* Le Corbusier caption */
+
+.home-page .social-photo--corbusier figcaption {
+  top: 4%;
+  left: 5%;
+}
+
+
+/* =========================================================
+   PROJECT BUTTON STACK
+   ========================================================= */
+
+.home-page .home-projects {
+  position: absolute;
+
+  z-index: 10;
+
+  top: 43%;
+  left: 50%;
+
+  width: min(31%, 430px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(7px, 1vh, 14px);
+
+  transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   CLICKABLE PROJECT LINKS
+   ========================================================= */
+
+.home-page .home-project-link {
+  display: flex;
+
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 220ms ease;
+
+  transform-origin: center;
+}
+
+.home-page .home-project-link:hover,
+.home-page .home-project-link:focus-visible {
+  transform:
+    translateY(-3px)
+    scale(1.07);
+
+  filter:
+    drop-shadow(
+      0 7px 7px rgb(230 74 150 / 22%)
+    );
+}
+
+.home-page .home-project-link:active {
+  transform:
+    translateY(0)
+    scale(1.02);
+}
+
+
+/* =========================================================
+   TITLE ART
+   ========================================================= */
+
+.home-page .project-art {
+  display: block;
+
+  transition:
+    transform 220ms ease;
+}
+
+.home-page .project-art > img,
+.home-page .project-art > svg {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  overflow: visible;
+}
+
+
+/* ---------------------------------------------------------
+   CHUNKY FORMS
+   --------------------------------------------------------- */
+
+.home-page
+.home-projects
+.project-art--chunky-forms {
+  width: clamp(
+    170px,
+    18vw,
+    255px
+  );
+}
+
+
+/* ---------------------------------------------------------
+   MUSEUM OF SCALE
+   --------------------------------------------------------- */
+
+.home-page
+.home-projects
+.project-art--museum-of-scale {
+  width: clamp(
+    240px,
+    28vw,
+    390px
+  );
+}
+
+
+/* ---------------------------------------------------------
+   MADE IN TOKYO
+   --------------------------------------------------------- */
+
+.home-page
+.home-projects
+.project-art--tokyo {
+  width: clamp(
+    175px,
+    19vw,
+    270px
+  );
+}
+
+
+/* ---------------------------------------------------------
+   RESUME
+   --------------------------------------------------------- */
+
+.home-page
+.home-projects
+.project-art--resume {
+  width: clamp(
+    100px,
+    12vw,
+    165px
+  );
+}
+
+
+/* Fallback in case one of the button images is missing */
+
+.home-page .title-fallback {
+  display: block;
+
+  width: 100%;
+
+  color: #111;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(22px, 2.6vw, 42px);
+  font-weight: 900;
+
+  line-height: 0.9;
+
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.055em;
+}
+
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .home-page .home-canvas {
+    width: 100vw;
+  }
+
+  .home-page .social-photo--model {
+    left: 3%;
+    width: 43%;
+  }
+
+  .home-page .social-photo--site {
+    left: 4%;
+    width: 33%;
+  }
+
+  .home-page .social-photo--corbusier {
+    right: 3%;
+    width: 30%;
+  }
+
+  .home-page .home-projects {
+    width: 34%;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .home-page {
+    min-height: 1120px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .home-page .home-canvas {
+    width: 100%;
+    height: 1120px;
+  }
+
+
+  /* masthead */
+
+  .home-page .home-masthead {
+    top: 2%;
+
+    width: 86%;
+  }
+
+
+  /* top photo */
+
+  .home-page .social-photo--model {
+    left: 5%;
+    top: 11%;
+
+    width: 90%;
+    height: 230px;
+  }
+
+
+  /* title stack */
+
+  .home-page .home-projects {
+    top: 36%;
+    left: 10%;
+
+    width: 80%;
+
+    transform: none;
+
+    gap: 8px;
+  }
+
+
+  .home-page
+  .home-projects
+  .project-art--chunky-forms {
+    width: min(54vw, 230px);
+  }
+
+  .home-page
+  .home-projects
+  .project-art--museum-of-scale {
+    width: min(78vw, 340px);
+  }
+
+  .home-page
+  .home-projects
+  .project-art--tokyo {
+    width: min(55vw, 240px);
+  }
+
+  .home-page
+  .home-projects
+  .project-art--resume {
+    width: min(36vw, 150px);
+  }
+
+
+  /* lower images */
+
+  .home-page .social-photo--site {
+    left: 4%;
+    top: 62%;
+    bottom: auto;
+
+    width: 44%;
+    height: 300px;
+  }
+
+  .home-page .social-photo--corbusier {
+    right: 4%;
+    top: 62%;
+    bottom: auto;
+
+    width: 44%;
+    height: 300px;
+  }
+
+
+  .home-page .social-photo figcaption {
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .home-page {
+    min-height: 1050px;
+  }
+
+  .home-page .home-canvas {
+    height: 1050px;
+  }
+
+  .home-page .social-photo--model {
+    height: 205px;
+  }
+
+  .home-page .home-projects {
+    top: 35%;
+  }
+
+  .home-page .social-photo--site,
+  .home-page .social-photo--corbusier {
+    top: 61%;
+
+    height: 280px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-page .social-photo,
+  .home-page .home-project-link,
+  .home-page .project-art {
+    transition: none;
+  }
+
+  .home-page .social-photo:hover,
+  .home-page .home-project-link:hover,
+  .home-page .home-project-link:focus-visible {
+    transform: none;
+  }
+
+}

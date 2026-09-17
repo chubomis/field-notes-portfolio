@@ -46,7 +46,12 @@ export const assets = {
   museumDetailTwo: asset("Museum of Scale Details-21.png"),
   museumAxo: asset("AxoDiagrams comp-02.png"),
   museumBoulder: asset("Museum of Scale Boulder-19.png"),
-  tokyoVideo: asset("Tokyo Video.mp4", "Tokyo.mp4", "Tokyo Video.webm"),
+  tokyoVideo: asset(
+    "AXOEXTERIOR.mp4",
+    "Tokyo Video.mp4",
+    "Tokyo.mp4",
+    "Tokyo Video.webm"
+  ),
   tokyoPoster: asset("Tokyo Video Poster.webp", "Tokyo Video Poster.png"),
   tokyoResearch: asset("Tokyo Research Collage.webp", "Tokyo Research Collage.png"),
   tokyoPlans: asset("Tokyo Floorplans-24.png"),
