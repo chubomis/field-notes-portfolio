@@ -190,1007 +190,848 @@
   }
 }
 
-@utility fieldnotes-scene {
-  --pointer-x: 0;
-  --pointer-y: 0;
+/* Portfolio layout */
+:root {
+  --hot-pink: #ff1493;
+  --ink: #161616;
+  --paper: #fff;
+  --rule: #dedbd8;
+  --project-pink: var(--hot-pink);
+}
 
+html {
+  scrollbar-color: var(--hot-pink) #f4edf0;
+  scrollbar-width: auto;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-color: var(--hot-pink) #f4edf0;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: #f4edf0;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--hot-pink);
+  border: 2px solid #f4edf0;
+  border-radius: 20px;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--hot-pink);
+  outline-offset: 6px;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+figure,
+h1,
+h2,
+p {
+  margin: 0;
+}
+::selection {
+  background: #ffb7db;
+  color: #111;
+}
+
+/* Homepage: ordinary figures, so the social photos are not links/buttons. */
+.home-page {
   position: relative;
   min-height: 100svh;
-
-  overflow: hidden;
   isolation: isolate;
-
-  background-color: var(--sheet);
+  background: #f8f8f6;
 }
-
-.portfolio-page {
-  background: var(--project-paper);
-}
-
-@utility fieldnotes-background {
+.home-background {
   position: absolute;
   inset: 0;
-
-  z-index: -2;
-
+  z-index: -1;
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
-  opacity: 0.72;
-
+  opacity: 0.82;
   pointer-events: none;
-  user-select: none;
 }
-
-@utility fieldnotes-title {
-  position: absolute;
-
-  z-index: 2;
-
-  top: 5.5%;
-  left: 50%;
-
-  width: min(72vw, 68rem);
-
-  transform: translate3d(
-    calc(-50% + var(--pointer-x) * 3px),
-    calc(var(--pointer-y) * 2px),
-    0
-  );
-
-  transition: transform 180ms ease-out;
-
-  pointer-events: none;
-  user-select: none;
-
-  & img {
-    display: block;
-
-    width: 100%;
-    height: auto;
-  }
-}
-
-@utility project-image {
-  position: absolute;
-
-  z-index: 3;
-
-  margin: 0;
-
-  appearance: none;
-
-  border: 0;
-  border-radius: 0;
-
-  background: transparent;
-
-  padding: 0;
-
-  cursor: pointer;
-
-  transform-style: preserve-3d;
-
-  transition:
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 300ms ease;
-
-  & img {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    pointer-events: none;
-    user-select: none;
-  }
-
-  &:hover,
-  &:focus-visible {
-    z-index: 5;
-
-    filter: drop-shadow(
-      0 18px 16px var(--collage-shadow)
-    );
-
-    outline: none;
-  }
-
-  &:focus-visible {
-    box-shadow: 0 0 0 2px var(--ring);
-  }
-}
-
-@utility project-image-colorful {
-  left: 26%;
-  bottom: 5%;
-
-  width: clamp(18rem, 34vw, 36rem);
-
-  transform: translate3d(
-    calc(var(--pointer-x) * 10px),
-    calc(var(--pointer-y) * 7px),
-    0
-  );
-
-  &:hover,
-  &:focus-visible {
-    transform:
-      translate3d(
-        calc(var(--pointer-x) * 10px),
-        calc(var(--pointer-y) * 7px - 10px),
-        28px
-      )
-      rotate(-1deg)
-      scale(1.045);
-  }
-}
-
-@utility project-image-snowy {
-  right: 7%;
-  top: 39%;
-
-  width: clamp(20rem, 37vw, 39rem);
-
-  transform: translate3d(
-    calc(var(--pointer-x) * -8px),
-    calc(var(--pointer-y) * -6px),
-    0
-  );
-
-  &:hover,
-  &:focus-visible {
-    transform:
-      translate3d(
-        calc(var(--pointer-x) * -8px),
-        calc(var(--pointer-y) * -6px - 10px),
-        28px
-      )
-      rotate(1deg)
-      scale(1.04);
-  }
-}
-
-@utility fieldnotes-nav {
-  position: absolute;
-
-  z-index: 6;
-
-  left: clamp(1rem, 2.4vw, 2.5rem);
-  bottom: clamp(1rem, 3.5vh, 2.5rem);
-
-  display: flex;
-
-  width: clamp(7.5rem, 12vw, 11rem);
-
-  flex-direction: column;
-  align-items: flex-start;
-
-  gap: clamp(0.35rem, 0.7vh, 0.65rem);
-
-  & button,
-  & img {
-    width: 100%;
-  }
-
-  & button {
-    transform: translateY(0) scale(1);
-
-    transition:
-      transform 250ms ease,
-      filter 250ms ease;
-  }
-
-  & button:hover,
-  & button:focus-visible {
-    transform: translateY(-2px) scale(1.015);
-
-    filter: drop-shadow(
-      0 5px 4px var(--collage-shadow)
-    );
-  }
-}
-
-@media (max-width: 700px) {
-  .fieldnotes-background {
-    opacity: 0.58;
-  }
-
-  .fieldnotes-title {
-    top: 4%;
-    width: 94vw;
-  }
-
-  .project-image-colorful {
-    left: 24%;
-    bottom: 24%;
-    width: 72vw;
-  }
-
-  .project-image-snowy {
-    top: 31%;
-    right: 3%;
-    width: 72vw;
-  }
-
-  .fieldnotes-nav {
-    width: 7.2rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fieldnotes-title,
-  .project-image,
-  .fieldnotes-nav button {
-    transition-duration: 0.01ms;
-    transform: none;
-  }
-
-  .project-image:hover,
-  .project-image:focus-visible {
-    transform: none;
-  }
-}
-
-.funky-project {
-  --project-progress: 0;
-
+.home-canvas {
   position: relative;
-
-  overflow: clip;
-
-  color: var(--project-ink);
-
-  background-color: var(--project-paper);
-}
-
-.funky-project::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  pointer-events: none;
-
-  opacity: 0.2;
-
-  background-image:
-    linear-gradient(
-      var(--project-rule) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      var(--project-rule) 1px,
-      transparent 1px
-    );
-
-  background-size: 4rem 4rem;
-
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black 15%,
-    black 85%,
-    transparent
-  );
-}
-
-.project-progress {
-  position: fixed;
-
-  z-index: 20;
-
-  top: 50%;
-  right: clamp(0.75rem, 1.8vw, 2rem);
-
-  width: 2px;
-  height: 18vh;
-
-  transform: translateY(-50%);
-
-  background: var(--project-rule);
-}
-
-.project-progress span {
-  display: block;
-
-  width: 100%;
-
-  height: calc(
-    var(--project-progress) * 100%
-  );
-
-  background: var(--project-pink);
-}
-
-.funky-intro {
-  position: relative;
-
-  z-index: 1;
-
-  width: min(100%, 120rem);
-
-  min-height: 150vh;
-
+  width: min(100%, max(740px, 88svh), 1120px);
+  aspect-ratio: 702 / 795;
   margin-inline: auto;
-
-  padding:
-    clamp(7rem, 14vw, 13rem)
-    clamp(1.25rem, 4.5vw, 5rem)
-    clamp(8rem, 14vw, 14rem);
+}
+.home-masthead {
+  position: absolute;
+  left: 19%;
+  top: 1%;
+  width: 62%;
+  mix-blend-mode: multiply;
+}
+.home-masthead img {
+  width: 100%;
+}
+.social-photo {
+  position: absolute;
+  overflow: hidden;
+}
+.social-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.social-photo figcaption {
+  position: absolute;
+  color: white;
+  font-weight: 800;
+  line-height: 1.12;
+  font-size: clamp(14px, 2.5svh, 24px);
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px #0003;
+}
+.social-photo--model {
+  left: 8.3%;
+  top: 18%;
+  width: 39.3%;
+  aspect-ratio: 3 / 2;
+}
+.social-photo--model figcaption {
+  right: 4%;
+  bottom: 4%;
+}
+.social-photo--site {
+  left: 10.7%;
+  top: 66%;
+  width: 29.8%;
+  aspect-ratio: 455 / 575;
+}
+.social-photo--site figcaption {
+  top: 3%;
+  left: 25%;
+  font-size: clamp(13px, 2.2svh, 22px);
+}
+.social-photo--corbusier {
+  right: 4%;
+  top: 60%;
+  width: 27.2%;
+  aspect-ratio: 3 / 4;
+}
+.social-photo--corbusier figcaption {
+  top: 5%;
+  left: 5%;
+}
+.home-projects {
+  position: absolute;
+  top: 46%;
+  left: 34%;
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 1.5svh, 22px);
+  z-index: 2;
+}
+.home-project-link {
+  display: block;
+  max-width: 100%;
+  transition:
+    transform 200ms ease,
+    filter 200ms ease;
+}
+.home-project-link:hover {
+  transform: translateY(-3px) rotate(-1deg);
+  filter: drop-shadow(0 4px 4px #e877ad3b);
+}
+.project-art {
+  display: block;
+}
+.project-art > img,
+.project-art > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.home-projects .project-art--chunky-forms {
+  width: clamp(120px, 16svh, 180px);
+}
+.home-projects .project-art--museum-of-scale {
+  width: clamp(190px, 26svh, 276px);
+}
+.home-projects .project-art--tokyo {
+  width: clamp(122px, 16.8svh, 190px);
+}
+.home-projects .project-art--resume {
+  width: clamp(88px, 12svh, 126px);
+}
+.title-fallback {
+  font-size: clamp(20px, 4vw, 42px);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.95;
+}
+.project-art--chunky-forms .title-fallback,
+.project-art--tokyo .title-fallback {
+  color: #ed73ae;
+  text-shadow: 1px 2px #85435e;
 }
 
-.project-kicker,
-.process-label,
-figcaption {
-  margin: 0;
-
-  color: var(--project-ink);
-
-  font-size: 0.68rem;
-  font-weight: 700;
-
-  line-height: 1.2;
-
-  letter-spacing: 0;
-
+/* Shared project navigation and the actual page scrollbar. */
+.project-page {
+  background: var(--paper);
+  min-height: 100svh;
+}
+.page-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 4vw;
+  font-size: 12px;
+}
+.home-link {
+  flex-shrink: 0;
+  font-weight: 800;
   text-transform: uppercase;
 }
-
-.funky-title {
-  width: min(45rem, 70vw);
-
-  margin:
-    clamp(2rem, 5vw, 5rem)
-    auto
-    clamp(4rem, 8vw, 8rem);
+.home-link span {
+  margin-right: 8px;
+  color: var(--hot-pink);
 }
-
-.funky-title img,
-.process-overview img,
-.project-blurb img,
-.study img,
-.final-render img {
-  display: block;
-
-  width: 100%;
-  height: auto;
+.page-navigation nav {
+  display: flex;
+  gap: 22px;
+  align-items: center;
 }
-
-.process-overview {
-  margin: 0;
+.page-navigation nav a {
+  padding-block: 6px;
+  border-bottom: 2px solid transparent;
 }
-
-.process-overview figcaption,
-.study figcaption {
-  margin-top: 0.75rem;
-
-  padding-top: 0.65rem;
-
-  border-top:
-    1px solid
-    var(--project-rule);
+.page-navigation nav a[aria-current="page"] {
+  border-color: var(--hot-pink);
 }
-
-.project-blurb {
-  width: min(80rem, 92vw);
-
-  margin:
-    clamp(5rem, 10vw, 10rem)
-    auto
-    0;
+.page-navigation nav a:hover {
+  color: #ce096f;
 }
-
-[data-reveal] {
-  opacity: 0;
-
-  transform: translateY(2.5rem);
-
-  transition:
-    opacity 800ms ease,
-    transform 900ms
-      cubic-bezier(0.22, 1, 0.36, 1);
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  z-index: 100;
+  background: white;
+  padding: 12px;
 }
-
-[data-reveal][data-visible="true"] {
-  opacity: 1;
-
-  transform: translateY(0);
+.skip-link:focus {
+  top: 12px;
 }
-
-.funky-title[data-reveal] {
-  transition-delay: 80ms;
-}
-
-.process-overview[data-reveal] {
-  transition-delay: 160ms;
-}
-
-.project-blurb[data-reveal] {
-  transition-delay: 80ms;
-}
-
-.visual-hover {
-  transform-origin: center;
-
-  transition:
-    transform 360ms
-      cubic-bezier(0.22, 1, 0.36, 1),
-    filter 360ms ease;
-}
-
-.visual-hover:hover {
-  transform:
-    translateY(-0.5rem)
-    scale(1.012)
-    rotate(0.15deg);
-
-  filter:
-    brightness(1.02)
-    drop-shadow(
-      0 1.25rem 1rem
-      var(--project-shadow)
-    );
-}
-
-/* =========================================================
-   SCROLL PROCESS
-   ========================================================= */
-
-.process-story {
-  --process-progress: 0;
-  --drawing-progress: 0;
-  --revealed-stages: 0;
-
-  position: relative;
-
-  z-index: 2;
-
-  height: 360vh;
-
-  background-color:
-    color-mix(
-      in oklab,
-      var(--project-paper) 96%,
-      var(--project-blue)
-    );
-}
-
-.process-sticky {
-  position: sticky;
-
+.page-progress {
+  position: fixed;
+  z-index: 40;
   top: 0;
-
-  height: 100svh;
-
-  overflow: hidden;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  pointer-events: none;
 }
-
-.process-label {
-  position: absolute;
-
-  z-index: 5;
-
-  top: clamp(
-    1.5rem,
-    4vw,
-    3rem
-  );
-
-  left: clamp(
-    1.25rem,
-    4.5vw,
-    5rem
-  );
-}
-
-/* =========================================================
-   PAPER
-   ========================================================= */
-
-.paper-unroll {
-  position: absolute;
-
-  z-index: 1;
-
-  top: -7vh;
-  left: 50%;
-
-  width: min(55vw, 43rem);
-
-  /*
-   * IMPORTANT:
-   *
-   * Starts at 16vh and travels another 92vh.
-   *
-   * This makes the paper bottom travel at the same
-   * vertical rate as the seven drawing stages.
-   */
-  height: calc(
-    16vh +
-    var(--process-progress) *
-    92vh
-  );
-
-  overflow: hidden;
-
-  transform: translateX(-50%);
-
-  filter:
-    drop-shadow(
-      0 1rem 1rem
-      var(--project-shadow)
-    );
-}
-
-.paper-unroll img {
+.page-progress span {
   display: block;
-
   width: 100%;
   height: 100%;
-
-  object-fit: fill;
-
-  pointer-events: none;
-  user-select: none;
+  background: var(--hot-pink);
+  transform: scaleX(var(--page-progress, 0));
+  transform-origin: left;
 }
-
-/* =========================================================
-   DRAWING
-   ========================================================= */
-
-.axo-reveal {
-  position: absolute;
-
-  z-index: 2;
-
-  top: 7vh;
-  left: 50%;
-
-  width: min(28vw, 22rem);
-
-  /*
-   * Seven discrete reveal heights.
-   */
-  height: calc(
-    var(--drawing-progress) *
-    92%
-  );
-
-  overflow: hidden;
-
-  transform: translateX(-50%);
-
-  /*
-   * Small transition gives each stage a soft reveal
-   * without allowing it to race ahead.
-   */
-  transition:
-    height 180ms
-      cubic-bezier(
-        0.22,
-        1,
-        0.36,
-        1
-      );
+.content-width {
+  width: min(1200px, 92%);
+  margin-inline: auto;
 }
-
-.axo-reveal img {
-  display: block;
-
+.project-heading {
+  width: min(1120px, 88%);
+  margin: 0 auto;
+  padding: clamp(50px, 7vw, 110px) 0 clamp(52px, 7vw, 100px);
+  text-align: center;
+}
+.eyebrow,
+.art-figure figcaption,
+.figure-toolbar,
+.tokyo-film figcaption {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.project-heading .eyebrow {
+  margin-bottom: 28px;
+  color: #716c70;
+}
+.project-heading h1 {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.project-heading .project-art--chunky-forms {
+  width: min(300px, 62vw);
+}
+.project-heading .project-art--museum-of-scale {
+  width: min(530px, 80vw);
+}
+.project-heading .project-art--tokyo {
+  width: min(330px, 62vw);
+}
+.project-heading .project-art--resume {
+  width: min(260px, 54vw);
+}
+.project-footer {
+  width: min(1200px, 92%);
+  margin: clamp(70px, 10vw, 150px) auto 0;
+  padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.project-footer a:hover {
+  color: #ce096f;
+}
+.art-figure img {
   width: 100%;
   height: auto;
-
-  pointer-events: none;
-  user-select: none;
+}
+.art-figure figcaption {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+.visual-hover {
+  transition:
+    transform 300ms ease,
+    filter 300ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .visual-hover:hover {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 12px 10px #00000012);
+  }
+}
+.figure-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+}
+.figure-toolbar button {
+  min-width: 32px;
+  min-height: 36px;
+  background: transparent;
+  border: 0;
+  padding: 5px 9px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.figure-toolbar button:hover {
+  color: #ce096f;
+  background: #fff0f7;
 }
 
-/* =========================================================
-   STAGE NUMBERS
-   ========================================================= */
+/* Six texture columns, magnified 1.5x so approximately four are visible. */
+.texture-loop {
+  --loop-gap: 2vw;
+}
+.texture-window {
+  overflow: hidden;
+}
+.texture-track {
+  display: flex;
+  width: calc(300% + var(--loop-gap) * 2);
+  animation: texture-drift 36s linear infinite;
+}
+.texture-copy {
+  flex: 0 0 50%;
+  min-width: 0;
+  padding-right: var(--loop-gap);
+}
+.texture-copy img {
+  width: 100%;
+  height: auto;
+}
+@keyframes texture-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.texture-loop[data-paused="true"] .texture-track,
+.texture-loop:focus-within .texture-track {
+  animation-play-state: paused;
+}
+@media (hover: hover) {
+  .texture-loop:hover .texture-track {
+    animation-play-state: paused;
+  }
+}
+/* With reduced motion, all studies remain reachable through manual scrolling. */
+.texture-loop[data-reduced="true"] .texture-window {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.texture-loop[data-reduced="true"] .texture-track {
+  animation: none;
+  width: 150%;
+}
+.texture-loop[data-reduced="true"] .texture-copy {
+  flex-basis: 100%;
+  padding: 0;
+}
+.texture-loop[data-reduced="true"] .texture-copy + .texture-copy {
+  display: none;
+}
+.chunky-blurb {
+  width: min(880px, 100%);
+  margin: clamp(55px, 8vw, 110px) auto;
+}
 
+/* Paper and drawings share measured geometry. No hard-coded scroll thresholds. */
+.process-story {
+  --paper-open: 12%;
+  --drawing-hidden: 100%;
+  position: relative;
+  height: 360svh;
+  background: #f8f8f5;
+}
+.process-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+.process-label {
+  position: absolute;
+  top: 24px;
+  left: 4vw;
+  z-index: 3;
+}
+.paper-stage {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: min(88vw, 70svh);
+  height: 84%;
+  transform: translateX(-50%);
+}
+.paper-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--paper-open);
+  object-fit: fill;
+  filter: drop-shadow(0 12px 14px #00000016);
+  pointer-events: none;
+}
+.process-drawing {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  width: auto;
+  max-width: none;
+  height: 59%;
+  transform: translateX(-50%);
+  clip-path: inset(0 0 var(--drawing-hidden) 0);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
 .stage-index {
   position: absolute;
-
-  z-index: 4;
-
-  top: 12%;
-
-  right: clamp(
-    1.5rem,
-    8vw,
-    10rem
-  );
-
-  display: grid;
-
-  height: 76%;
-
+  top: 20%;
+  bottom: 30%;
+  right: max(20px, 9vw);
   margin: 0;
   padding: 0;
-
   list-style: none;
-
-  align-content: space-between;
-
-  font-size: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 11px;
   font-weight: 700;
 }
-
 .stage-index li {
-  opacity: 0.12;
-
-  transition:
-    opacity 180ms ease;
+  color: #bfc0bd;
 }
-
-.stage-index li:nth-child(1) {
-  opacity: clamp(
-    0.12,
-    calc(
-      var(--revealed-stages) *
-      10
-    ),
-    1
-  );
+.stage-index li[data-visible="true"] {
+  color: #c8006c;
 }
-
-.stage-index li:nth-child(2) {
-  opacity: clamp(
-    0.12,
-    calc(
-      (
-        var(--revealed-stages) -
-        1
-      ) *
-      10
-    ),
-    1
-  );
-}
-
-.stage-index li:nth-child(3) {
-  opacity: clamp(
-    0.12,
-    calc(
-      (
-        var(--revealed-stages) -
-        2
-      ) *
-      10
-    ),
-    1
-  );
-}
-
-.stage-index li:nth-child(4) {
-  opacity: clamp(
-    0.12,
-    calc(
-      (
-        var(--revealed-stages) -
-        3
-      ) *
-      10
-    ),
-    1
-  );
-}
-
-.stage-index li:nth-child(5) {
-  opacity: clamp(
-    0.12,
-    calc(
-      (
-        var(--revealed-stages) -
-        4
-      ) *
-      10
-    ),
-    1
-  );
-}
-
-.stage-index li:nth-child(6) {
-  opacity: clamp(
-    0.12,
-    calc(
-      (
-        var(--revealed-stages) -
-        5
-      ) *
-      10
-    ),
-    1
-  );
-}
-
-.stage-index li:nth-child(7) {
-  opacity: clamp(
-    0.12,
-    calc(
-      (
-        var(--revealed-stages) -
-        6
-      ) *
-      10
-    ),
-    1
-  );
-}
-
-/* =========================================================
-   SUPPORTING STUDIES
-   ========================================================= */
-
 .supporting-studies {
-  position: relative;
-
-  z-index: 1;
-
   display: grid;
-
-  grid-template-columns:
-    repeat(
-      12,
-      minmax(0, 1fr)
-    );
-
-  gap:
-    clamp(2rem, 5vw, 6rem)
-    clamp(1rem, 3vw, 3rem);
-
-  width: min(
-    100%,
-    105rem
-  );
-
-  margin-inline: auto;
-
-  padding:
-    clamp(9rem, 15vw, 15rem)
-    clamp(1.25rem, 4.5vw, 5rem);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(55px, 8vw, 110px) 20px;
+  padding-block: clamp(80px, 12vw, 160px);
 }
-
 .study-heading {
-  grid-column: 2 / 8;
+  grid-column: 2 / 11;
 }
-
-.study-heading h3,
-.final-copy h3 {
-  max-width: 13ch;
-
-  margin:
-    1.25rem
-    0
-    0;
-
-  font-size:
-    clamp(
-      2.5rem,
-      6vw,
-      6rem
-    );
-
+.study-heading h2,
+.final-outcome h2 {
+  font-size: clamp(36px, 5.5vw, 76px);
+  line-height: 0.98;
   font-weight: 800;
-
-  line-height: 0.95;
-
-  letter-spacing: 0;
+  margin-top: 22px;
 }
-
-.study {
-  margin: 0;
-}
-
 .study-projections {
   grid-column: 1 / 9;
 }
-
 .study-method {
   grid-column: 5 / 13;
 }
-
 .study-iterations {
   grid-column: 2 / 11;
 }
-
-/* =========================================================
-   FINAL
-   ========================================================= */
-
 .final-outcome {
-  position: relative;
-
-  z-index: 1;
-
   display: grid;
-
-  grid-template-columns:
-    minmax(
-      12rem,
-      0.7fr
-    )
-    minmax(
-      20rem,
-      1.3fr
-    );
-
-  gap:
-    clamp(
-      2rem,
-      7vw,
-      8rem
-    );
-
+  grid-template-columns: 0.75fr 1.25fr;
   align-items: end;
-
-  width: min(
-    100%,
-    100rem
-  );
-
-  margin-inline: auto;
-
-  padding:
-    clamp(7rem, 12vw, 12rem)
-    clamp(1.25rem, 4.5vw, 5rem)
-    clamp(8rem, 14vw, 14rem);
+  gap: 5vw;
+  padding-block: 40px;
+}
+.final-outcome > div {
+  padding-bottom: 55px;
 }
 
-.final-copy {
-  position: sticky;
-
-  bottom: 4rem;
-
-  padding-bottom: 4rem;
+/* Museum: one fixed viewport per drawing set; no sliding track or scrollbar. */
+.museum-content {
+  max-width: 1180px;
 }
-
-.final-render {
-  margin: 0;
-
+.drawing-frame {
+  position: relative;
+  width: 100%;
   overflow: hidden;
+  isolation: isolate;
+  background: white;
 }
-
-.final-render figcaption {
+.drawing-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  visibility: hidden;
+}
+.drawing-frame img.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+.elevation-slideshow .drawing-frame {
+  aspect-ratio: 1921 / 952;
+}
+.floorplan-slideshow {
+  width: min(760px, 100%);
+  margin: 30px auto 0;
+}
+.floorplan-slideshow .drawing-frame {
+  aspect-ratio: 926 / 790;
+}
+.slideshow-controls {
   display: flex;
-
-  justify-content: space-between;
-
-  padding:
-    0.85rem
-    0.15rem;
-
-  background:
-    var(--project-paper);
+  gap: 4px;
+  align-items: center;
+}
+.museum-plans {
+  margin-top: clamp(70px, 10vw, 130px);
+}
+.museum-plans > h2 {
+  text-align: center;
+}
+.museum-details {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: start;
+  gap: 7%;
+  margin-top: clamp(80px, 12vw, 170px);
+}
+.museum-detail-stack {
+  display: grid;
+  gap: 60px;
 }
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+/* Tokyo follows the supplied PDF: film, collage/plans, then large renders. */
+.project-heading--tokyo {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 9%;
+  text-align: left;
+  align-items: center;
+}
+.project-heading--tokyo h1 {
+  margin-left: 0;
+}
+.tokyo-introduction {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: clamp(13px, 1.4vw, 18px);
+  max-width: 33ch;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.tokyo-content {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+.tokyo-film {
+  position: relative;
+}
+.tokyo-film video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #eee;
+}
+.tokyo-film figcaption {
+  padding: 10px 4%;
+  color: #777;
+}
+.tokyo-research {
+  display: grid;
+  grid-template-columns: 1.1fr 0.85fr;
+  align-items: start;
+  gap: 7%;
+  margin-block: clamp(50px, 8vw, 100px);
+}
+.tokyo-floorplans {
+  padding-top: 24px;
+}
+.tokyo-renders {
+  display: grid;
+  gap: 0;
+}
+.tokyo-renders img {
+  width: 100%;
+}
+.resume-content {
+  min-height: 40svh;
+  text-align: center;
+}
+.document-link {
+  display: inline-block;
+  padding: 12px 18px;
+  border-bottom: 2px solid var(--hot-pink);
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+.resume-document {
+  display: block;
+  width: 100%;
+  height: 85svh;
+  border: 1px solid var(--rule);
+}
+.resume-empty {
+  margin: 50px auto;
+  color: #716c70;
+}
 
 @media (max-width: 700px) {
-  .project-progress {
-    display: none;
+  .home-canvas {
+    width: 100%;
+    aspect-ratio: auto;
+    min-height: 960px;
   }
-
-  .funky-intro {
-    min-height: auto;
-
-    padding-top: 7rem;
+  .home-masthead {
+    left: 3%;
+    top: 12px;
+    width: 94%;
   }
-
-  .funky-title {
-    width: 88vw;
-
-    margin-block:
-      2.5rem
-      4rem;
+  .social-photo--model {
+    left: 7%;
+    top: 150px;
+    width: 65%;
   }
-
-  .project-blurb {
-    width: 145vw;
-
-    margin-left: -25vw;
+  .social-photo--model figcaption {
+    font-size: 17px;
   }
-
-  .process-story {
-    height: 300vh;
+  .home-projects {
+    top: 365px;
+    left: 12%;
+    width: 76%;
+    gap: 18px;
   }
-
-  .paper-unroll {
-    width: 92vw;
+  .home-projects .project-art--chunky-forms {
+    width: 135px;
   }
-
-  .axo-reveal {
-    top: 11vh;
-
-    width: 50vw;
+  .home-projects .project-art--museum-of-scale {
+    width: 205px;
   }
-
+  .home-projects .project-art--tokyo {
+    width: 140px;
+  }
+  .home-projects .project-art--resume {
+    width: 98px;
+  }
+  .social-photo--site {
+    left: 6%;
+    top: 718px;
+    width: 41%;
+  }
+  .social-photo--corbusier {
+    right: 6%;
+    top: 660px;
+    width: 39%;
+  }
+  .social-photo--site figcaption,
+  .social-photo--corbusier figcaption {
+    font-size: 13px;
+    left: 6%;
+  }
+  .page-navigation {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 22px 5%;
+  }
+  .page-navigation nav {
+    flex-wrap: wrap;
+    gap: 9px 18px;
+    font-size: 11px;
+  }
+  .project-heading {
+    padding-block: 42px 58px;
+  }
+  .project-heading .eyebrow {
+    margin-bottom: 22px;
+  }
+  .figure-toolbar,
+  .figure-toolbar button {
+    font-size: 10px;
+  }
+  .figure-toolbar button {
+    min-height: 44px;
+  }
+  .process-label {
+    top: 22px;
+  }
   .stage-index {
-    right: 1rem;
+    right: 12px;
+    font-size: 10px;
   }
-
   .supporting-studies {
     display: block;
+    padding-block: 70px;
   }
-
-  .study-heading {
-    margin-bottom: 6rem;
+  .supporting-studies > * + * {
+    margin-top: 60px;
   }
-
-  .study {
-    margin-bottom: 6rem;
-  }
-
-  .study-projections {
-    width: 100%;
-  }
-
-  .study-method {
-    width: 105%;
-
-    margin-left: -5%;
-  }
-
-  .study-iterations {
-    width: 100%;
-  }
-
   .final-outcome {
     display: block;
   }
-
-  .final-copy {
-    position: static;
-
-    margin-bottom: 4rem;
+  .final-outcome > div {
+    padding-bottom: 40px;
   }
-
-  .final-render {
-    width: 100%;
+  .museum-details {
+    display: block;
+  }
+  .museum-axo {
+    width: 78%;
+    margin: 0 auto 60px;
+  }
+  .museum-detail-stack {
+    gap: 45px;
+  }
+  .project-heading--tokyo {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .project-heading--tokyo h1 {
+    margin: 0 auto;
+  }
+  .project-heading--tokyo .eyebrow {
+    text-align: center;
+  }
+  .tokyo-introduction {
+    max-width: 38ch;
+    margin-inline: auto;
+  }
+  .tokyo-research {
+    gap: 3%;
+    grid-template-columns: 1.1fr 0.9fr;
+    width: 96%;
+  }
+  .tokyo-floorplans {
+    padding-top: 10px;
+  }
+  .project-footer {
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
+/* The collage stays separated on wider phones/tablets as the photos grow. */
+@media (min-width: 480px) and (max-width: 700px) {
+  .home-canvas {
+    min-height: 1200px;
+  }
+  .home-projects {
+    top: 485px;
+  }
+  .social-photo--site {
+    top: 865px;
+  }
+  .social-photo--corbusier {
+    top: 810px;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    opacity: 1;
-
-    transform: none;
-
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+  .home-project-link,
+  .visual-hover {
     transition: none;
   }
-
-  .visual-hover,
+  .home-project-link:hover,
   .visual-hover:hover {
     transform: none;
-
-    transition: none;
   }
-
+  .texture-track {
+    animation: none;
+  }
+  .texture-window {
+    overflow-x: auto;
+  }
   .process-story {
-    height: 160vh;
+    height: 100svh;
+    --paper-open: 100%;
+    --drawing-hidden: 0%;
   }
-
-  .paper-unroll {
-    height: 108vh;
+  .process-sticky {
+    position: relative;
   }
-
-  .axo-reveal {
-    height: 92%;
-
-    transition: none;
-  }
-
   .stage-index li {
-    opacity: 1;
+    color: #c8006c;
   }
 }
