@@ -1,0 +1,239 @@
+/* =========================================================
+   GLOBAL CUSTOM SCROLLBAR
+   No arrows, fully rounded
+   ========================================================= */
+
+
+/* =========================================================
+   HIDE THE REAL BROWSER SCROLLBAR
+   ========================================================= */
+
+/*
+ * Firefox
+ */
+
+html {
+  scrollbar-width: none !important;
+}
+
+
+/*
+ * Chrome / Edge / Safari
+ */
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/*
+ * IE / older Edge fallback
+ */
+
+html,
+body {
+  -ms-overflow-style: none;
+}
+
+
+/*
+ * Scrolling itself is NOT disabled.
+ * The page can still be moved with:
+ *
+ * mouse wheel
+ * trackpad
+ * keyboard
+ * touch
+ * custom scrollbar
+ */
+
+html {
+  overflow-y: scroll;
+  scroll-behavior: auto;
+}
+
+
+/* =========================================================
+   CUSTOM TRACK
+   ========================================================= */
+
+.global-scrollbar {
+  position: fixed;
+
+  z-index: 999999;
+
+  top: 0;
+  right: 4px;
+
+  width: 16px;
+  height: 100vh;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 180ms ease;
+}
+
+
+/*
+ * Show only when page has enough content
+ * to actually scroll.
+ */
+
+.global-scrollbar.is-visible {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   THUMB
+   ========================================================= */
+
+.global-scrollbar__thumb {
+  position: absolute;
+
+  top: 0;
+  left: 2px;
+
+  width: 12px;
+
+  /*
+   * Fully rounded pill.
+   */
+  border-radius: 9999px;
+
+  background:
+    #ff1493;
+
+  /*
+   * Slight white inset gives it a cleaner
+   * floating appearance.
+   */
+  border:
+    2px solid
+    rgb(255 255 255 / 72%);
+
+  box-shadow:
+    0 2px 8px
+      rgb(0 0 0 / 9%);
+
+  cursor: grab;
+
+  touch-action: none;
+
+  user-select: none;
+
+  transition:
+    width 150ms ease,
+    left 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.global-scrollbar:hover
+.global-scrollbar__thumb {
+  left: 1px;
+
+  width: 14px;
+
+  background:
+    #f20b89;
+
+  box-shadow:
+    0 3px 10px
+      rgb(0 0 0 / 14%);
+}
+
+
+/* =========================================================
+   DRAGGING
+   ========================================================= */
+
+.custom-scrollbar-dragging,
+.custom-scrollbar-dragging body {
+  cursor: grabbing !important;
+
+  user-select: none !important;
+}
+
+
+.custom-scrollbar-dragging
+.global-scrollbar__thumb {
+  cursor: grabbing;
+
+  left: 1px;
+
+  width: 14px;
+
+  background:
+    #dc0078;
+}
+
+
+/* =========================================================
+   NO ARROWS
+   ========================================================= */
+
+/*
+ * There are literally no scrollbar arrow elements
+ * in this custom scrollbar, so Windows cannot draw
+ * top/bottom arrows anymore.
+ */
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .global-scrollbar {
+    right: 2px;
+
+    width: 10px;
+  }
+
+
+  .global-scrollbar__thumb {
+    left: 2px;
+
+    width: 7px;
+
+    border-width: 1px;
+  }
+
+
+  .global-scrollbar:hover
+  .global-scrollbar__thumb {
+    left: 1px;
+
+    width: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+  .global-scrollbar {
+    display: none !important;
+  }
+
+}

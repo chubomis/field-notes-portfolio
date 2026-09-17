@@ -1,19 +1,22 @@
 /* =========================================================
    KIRAN'S DIGITAL FIELDNOTES — HOMEPAGE
-   Layout based on Main Page Layout New 2
+   Full images / no clipping
    ========================================================= */
 
-/*
-  This file intentionally overrides only the homepage.
-  Project-page styling remains in styles.css.
-*/
+
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 .home-page {
   position: relative;
-  width: 100%;
-  min-height: 100svh;
 
-  overflow: hidden;
+  width: 100%;
+  min-height: 1080px;
+
+  overflow-x: hidden;
+  overflow-y: visible;
+
   isolation: isolate;
 
   background: #f8f8f6;
@@ -26,6 +29,7 @@
 
 .home-page .home-background {
   position: absolute;
+
   inset: 0;
 
   z-index: -2;
@@ -46,15 +50,25 @@
 /* =========================================================
    MAIN HOMEPAGE CANVAS
 
-   Unlike the previous narrow / portrait canvas, this uses
-   almost the entire screen so the collage can breathe.
+   Important:
+   Always at least 1080px tall.
+
+   This prevents portrait images from being clipped at the
+   bottom on shorter desktop browser windows.
    ========================================================= */
 
 .home-page .home-canvas {
   position: relative;
 
-  width: min(100vw, 1600px);
-  height: max(100svh, 720px);
+  width: min(
+    100vw,
+    1600px
+  );
+
+  height: max(
+    100svh,
+    1080px
+  );
 
   margin-inline: auto;
 
@@ -71,19 +85,24 @@
 
   z-index: 5;
 
-  top: 2.5%;
+  top: 2%;
   left: 50%;
 
-  width: min(44vw, 650px);
+  width: min(
+    44vw,
+    650px
+  );
 
   margin: 0;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   mix-blend-mode: multiply;
 
   pointer-events: none;
 }
+
 
 .home-page .home-masthead img {
   display: block;
@@ -92,7 +111,9 @@
   height: auto;
 }
 
-/* Used if Main Page Title-03.png isn't present */
+
+/* Text fallback */
+
 .home-page .home-masthead > span {
   display: block;
 
@@ -100,46 +121,66 @@
 
   color: #111;
 
-  font-size: clamp(30px, 4vw, 68px);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(
+    30px,
+    4vw,
+    68px
+  );
+
   font-weight: 900;
+
   line-height: 0.85;
 
   text-align: center;
   text-transform: uppercase;
+
   letter-spacing: -0.06em;
 }
 
 
 /* =========================================================
    SOCIAL PHOTOS
-
-   These remain NON-CLICKABLE.
-   Bigger + pushed toward the edges like your PDF reference.
    ========================================================= */
 
 .home-page .social-photo {
   position: absolute;
 
-  overflow: hidden;
+  overflow: visible;
 
   margin: 0;
 
-  background: #ddd;
+  background: transparent;
 
-  box-shadow:
-    0 7px 22px rgb(0 0 0 / 8%);
+  box-shadow: none;
 
   transition:
-    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 350ms ease;
+    transform 300ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    filter 300ms ease;
 }
+
 
 .home-page .social-photo:hover {
-  transform: translateY(-4px);
+  transform:
+    translateY(-5px);
 
-  box-shadow:
-    0 14px 32px rgb(0 0 0 / 12%);
+  filter:
+    drop-shadow(
+      0 12px 14px
+      rgb(0 0 0 / 11%)
+    );
 }
+
 
 .home-page .social-photo > img {
   display: block;
@@ -147,69 +188,90 @@
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 
-/* ---------------------------------------------------------
-   TOP LEFT — TESTING ON THE SITE MODEL
-   --------------------------------------------------------- */
+/* =========================================================
+   TOP LEFT
+   TESTING ON THE SITE MODEL
+   ========================================================= */
 
 .home-page .social-photo--model {
   z-index: 2;
 
-  left: 4.8%;
-  top: 14%;
+  left: 2.5%;
+  top: 13%;
 
-  width: 41%;
-  height: 27%;
+  width: 32%;
+
+  height: auto;
+
+  aspect-ratio: 3 / 2;
 }
+
 
 .home-page .social-photo--model > img {
-  object-position: center 45%;
+  object-fit: contain;
+  object-position: center;
 }
 
 
-/* ---------------------------------------------------------
-   BOTTOM LEFT — SITE VISIT
-   Wider crop to match reference instead of portrait.
-   --------------------------------------------------------- */
+/* =========================================================
+   BOTTOM LEFT
+   SITE VISIT / CARRAIG RIDGE
+
+   Uses TOP positioning instead of BOTTOM.
+
+   This makes its position predictable and prevents
+   the bottom of the portrait from being clipped.
+   ========================================================= */
 
 .home-page .social-photo--site {
   z-index: 2;
 
-  left: 7.5%;
-  bottom: 1.5%;
+  left: 7%;
 
-  width: 31%;
-  height: 36%;
+  top: 57%;
 
-  aspect-ratio: auto;
+  width: 18.5%;
+
+  height: auto;
+
+  aspect-ratio: 455 / 575;
 }
+
 
 .home-page .social-photo--site > img {
-  object-position: center 45%;
+  object-fit: contain;
+  object-position: center;
 }
 
 
-/* ---------------------------------------------------------
-   BOTTOM RIGHT — LE CORBUSIER
-   --------------------------------------------------------- */
+/* =========================================================
+   BOTTOM RIGHT
+   LE CORBUSIER
+   ========================================================= */
 
 .home-page .social-photo--corbusier {
   z-index: 2;
 
-  right: 4.5%;
-  bottom: 7%;
+  right: 6%;
 
-  width: 28%;
-  height: 37%;
+  top: 54%;
 
-  aspect-ratio: auto;
+  width: 18%;
+
+  height: auto;
+
+  aspect-ratio: 3 / 4;
 }
 
+
 .home-page .social-photo--corbusier > img {
-  object-position: center 48%;
+  object-fit: contain;
+  object-position: center;
 }
 
 
@@ -220,16 +282,21 @@
 .home-page .social-photo figcaption {
   position: absolute;
 
-  z-index: 2;
+  z-index: 3;
 
-  color: #fff;
+  color: white;
 
   font-family:
     Arial,
     Helvetica,
     sans-serif;
 
-  font-size: clamp(17px, 1.7vw, 28px);
+  font-size: clamp(
+    17px,
+    1.7vw,
+    28px
+  );
+
   font-weight: 900;
 
   line-height: 0.98;
@@ -239,13 +306,18 @@
   text-transform: uppercase;
 
   text-shadow:
-    0 2px 8px rgb(0 0 0 / 22%);
+    0 2px 8px
+    rgb(0 0 0 / 28%);
+
+  pointer-events: none;
 }
 
 
-/* top-left photo caption */
+/* Site model caption */
 
-.home-page .social-photo--model figcaption {
+.home-page
+.social-photo--model
+figcaption {
   right: 4%;
   bottom: 5%;
 
@@ -253,21 +325,35 @@
 }
 
 
-/* site visit caption */
+/* Carraig Ridge caption */
 
-.home-page .social-photo--site figcaption {
+.home-page
+.social-photo--site
+figcaption {
   top: 4%;
-  left: 25%;
+  left: 8%;
 
-  font-size: clamp(16px, 1.5vw, 25px);
+  font-size: clamp(
+    14px,
+    1.2vw,
+    21px
+  );
 }
 
 
 /* Le Corbusier caption */
 
-.home-page .social-photo--corbusier figcaption {
+.home-page
+.social-photo--corbusier
+figcaption {
   top: 4%;
-  left: 5%;
+  left: 6%;
+
+  font-size: clamp(
+    14px,
+    1.2vw,
+    21px
+  );
 }
 
 
@@ -280,19 +366,29 @@
 
   z-index: 10;
 
-  top: 43%;
+  top: 37%;
   left: 50%;
 
-  width: min(31%, 430px);
+  width: min(
+    31%,
+    430px
+  );
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
-  gap: clamp(7px, 1vh, 14px);
+  gap: clamp(
+    7px,
+    1vh,
+    14px
+  );
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 }
 
 
@@ -309,11 +405,18 @@
   justify-content: center;
 
   transition:
-    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
     filter 220ms ease;
 
   transform-origin: center;
 }
+
 
 .home-page .home-project-link:hover,
 .home-page .home-project-link:focus-visible {
@@ -323,9 +426,11 @@
 
   filter:
     drop-shadow(
-      0 7px 7px rgb(230 74 150 / 22%)
+      0 7px 7px
+      rgb(230 74 150 / 22%)
     );
 }
+
 
 .home-page .home-project-link:active {
   transform:
@@ -335,7 +440,7 @@
 
 
 /* =========================================================
-   TITLE ART
+   PROJECT TITLE ART
    ========================================================= */
 
 .home-page .project-art {
@@ -344,6 +449,7 @@
   transition:
     transform 220ms ease;
 }
+
 
 .home-page .project-art > img,
 .home-page .project-art > svg {
@@ -356,9 +462,9 @@
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    CHUNKY FORMS
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .home-page
 .home-projects
@@ -371,9 +477,9 @@
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    MUSEUM OF SCALE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .home-page
 .home-projects
@@ -386,9 +492,9 @@
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    MADE IN TOKYO
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .home-page
 .home-projects
@@ -401,9 +507,9 @@
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    RESUME
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .home-page
 .home-projects
@@ -416,7 +522,9 @@
 }
 
 
-/* Fallback in case one of the button images is missing */
+/* =========================================================
+   FALLBACK TITLE
+   ========================================================= */
 
 .home-page .title-fallback {
   display: block;
@@ -430,44 +538,157 @@
     Helvetica,
     sans-serif;
 
-  font-size: clamp(22px, 2.6vw, 42px);
+  font-size: clamp(
+    22px,
+    2.6vw,
+    42px
+  );
+
   font-weight: 900;
 
   line-height: 0.9;
 
   text-align: center;
+
   text-transform: uppercase;
+
   letter-spacing: -0.055em;
 }
 
 
 /* =========================================================
-   TABLETS
+   MEDIUM DESKTOP / SMALL LAPTOP
    ========================================================= */
 
-@media (max-width: 1050px) {
+@media (
+  max-width: 1300px
+) {
+
+  .home-page {
+    min-height: 1000px;
+  }
+
+
+  .home-page .home-canvas {
+    height: 1000px;
+  }
+
+
+  .home-page .social-photo--model {
+    left: 2.5%;
+    top: 13%;
+
+    width: 34%;
+  }
+
+
+  .home-page .social-photo--site {
+    left: 5%;
+
+    top: 57%;
+
+    width: 20%;
+  }
+
+
+  .home-page .social-photo--corbusier {
+    right: 5%;
+
+    top: 55%;
+
+    width: 19%;
+  }
+
+
+  .home-page .home-projects {
+    top: 38%;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (
+  max-width: 1050px
+) {
+
+  .home-page {
+    min-height: 1150px;
+
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
 
   .home-page .home-canvas {
     width: 100vw;
+
+    height: 1150px;
   }
+
+
+  /* Masthead */
+
+  .home-page .home-masthead {
+    top: 2%;
+
+    width: 68%;
+  }
+
+
+  /* Site model */
 
   .home-page .social-photo--model {
     left: 3%;
-    width: 43%;
+    top: 11%;
+
+    width: 48%;
+
+    height: auto;
+
+    aspect-ratio: 3 / 2;
   }
 
-  .home-page .social-photo--site {
-    left: 4%;
-    width: 33%;
-  }
 
-  .home-page .social-photo--corbusier {
-    right: 3%;
-    width: 30%;
-  }
+  /* Project buttons */
 
   .home-page .home-projects {
-    width: 34%;
+    top: 36%;
+
+    width: 44%;
+  }
+
+
+  /* Carraig Ridge */
+
+  .home-page .social-photo--site {
+    left: 5%;
+
+    top: 61%;
+
+    width: 27%;
+
+    height: auto;
+
+    aspect-ratio: 455 / 575;
+  }
+
+
+  /* Le Corbusier */
+
+  .home-page .social-photo--corbusier {
+    right: 5%;
+
+    top: 59%;
+
+    width: 26%;
+
+    height: auto;
+
+    aspect-ratio: 3 / 4;
   }
 
 }
@@ -477,22 +698,26 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 760px) {
+@media (
+  max-width: 760px
+) {
 
   .home-page {
-    min-height: 1120px;
+    min-height: 1250px;
 
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: visible;
   }
+
 
   .home-page .home-canvas {
     width: 100%;
-    height: 1120px;
+
+    height: 1250px;
   }
 
 
-  /* masthead */
+  /* Masthead */
 
   .home-page .home-masthead {
     top: 2%;
@@ -501,21 +726,24 @@
   }
 
 
-  /* top photo */
+  /* Site model */
 
   .home-page .social-photo--model {
-    left: 5%;
-    top: 11%;
+    left: 7%;
+    top: 9%;
 
-    width: 90%;
-    height: 230px;
+    width: 86%;
+
+    height: auto;
+
+    aspect-ratio: 3 / 2;
   }
 
 
-  /* title stack */
+  /* Project stack */
 
   .home-page .home-projects {
-    top: 36%;
+    top: 33%;
     left: 10%;
 
     width: 80%;
@@ -529,83 +757,125 @@
   .home-page
   .home-projects
   .project-art--chunky-forms {
-    width: min(54vw, 230px);
+    width: min(
+      54vw,
+      230px
+    );
   }
+
 
   .home-page
   .home-projects
   .project-art--museum-of-scale {
-    width: min(78vw, 340px);
+    width: min(
+      78vw,
+      340px
+    );
   }
+
 
   .home-page
   .home-projects
   .project-art--tokyo {
-    width: min(55vw, 240px);
+    width: min(
+      55vw,
+      240px
+    );
   }
+
 
   .home-page
   .home-projects
   .project-art--resume {
-    width: min(36vw, 150px);
+    width: min(
+      36vw,
+      150px
+    );
   }
 
 
-  /* lower images */
+  /* Carraig Ridge */
 
   .home-page .social-photo--site {
-    left: 4%;
-    top: 62%;
-    bottom: auto;
+    left: 5%;
 
-    width: 44%;
-    height: 300px;
+    top: 64%;
+
+    width: 39%;
+
+    height: auto;
+
+    aspect-ratio: 455 / 575;
   }
 
-  .home-page .social-photo--corbusier {
-    right: 4%;
-    top: 62%;
-    bottom: auto;
 
-    width: 44%;
-    height: 300px;
+  /* Le Corbusier */
+
+  .home-page .social-photo--corbusier {
+    right: 5%;
+
+    top: 63%;
+
+    width: 38%;
+
+    height: auto;
+
+    aspect-ratio: 3 / 4;
   }
 
 
   .home-page .social-photo figcaption {
-    font-size: 15px;
+    font-size: 14px;
   }
 
 }
 
 
 /* =========================================================
-   VERY SMALL PHONES
+   SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (
+  max-width: 480px
+) {
 
   .home-page {
-    min-height: 1050px;
+    min-height: 1200px;
   }
+
 
   .home-page .home-canvas {
-    height: 1050px;
+    height: 1200px;
   }
+
 
   .home-page .social-photo--model {
-    height: 205px;
+    left: 7%;
+
+    width: 86%;
   }
+
 
   .home-page .home-projects {
-    top: 35%;
+    top: 32%;
   }
 
-  .home-page .social-photo--site,
-  .home-page .social-photo--corbusier {
-    top: 61%;
 
-    height: 280px;
+  .home-page .social-photo--site {
+    left: 4%;
+
+    top: 64%;
+
+    width: 41%;
+  }
+
+
+  .home-page .social-photo--corbusier {
+    right: 4%;
+
+    top: 63%;
+
+    width: 40%;
   }
 
 }
@@ -615,13 +885,16 @@
    REDUCED MOTION
    ========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media (
+  prefers-reduced-motion: reduce
+) {
 
   .home-page .social-photo,
   .home-page .home-project-link,
   .home-page .project-art {
     transition: none;
   }
+
 
   .home-page .social-photo:hover,
   .home-page .home-project-link:hover,

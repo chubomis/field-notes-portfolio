@@ -1,0 +1,129 @@
+/* =========================================================
+   GLOBAL SCROLLBAR
+   Applies to every page and scrollable element
+   ========================================================= */
+
+:root {
+  --scrollbar-pink: #ff1493;
+  --scrollbar-track: #f4edf0;
+}
+
+
+/* =========================================================
+   FIREFOX
+   ========================================================= */
+
+html,
+body,
+* {
+  scrollbar-width: auto;
+  scrollbar-color:
+    var(--scrollbar-pink)
+    var(--scrollbar-track);
+}
+
+
+/* =========================================================
+   CHROME / EDGE / SAFARI
+   ========================================================= */
+
+*::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* Rounded scrollbar track */
+
+*::-webkit-scrollbar-track {
+  background:
+    var(--scrollbar-track);
+
+  border-radius: 999px;
+}
+
+
+/* Fully rounded pink scroll thumb */
+
+*::-webkit-scrollbar-thumb {
+  background:
+    var(--scrollbar-pink);
+
+  border:
+    3px solid
+    var(--scrollbar-track);
+
+  border-radius: 999px;
+
+  min-height: 40px;
+}
+
+
+/* Slight interaction when hovering */
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #e6007e;
+}
+
+
+/* Slightly darker while dragging */
+
+*::-webkit-scrollbar-thumb:active {
+  background: #cc006f;
+}
+
+
+/* =========================================================
+   REMOVE TOP / BOTTOM SCROLLBAR ARROWS
+   ========================================================= */
+
+/*
+   This removes the arrow/button areas from
+   Chromium-based browsers and Safari.
+*/
+
+*::-webkit-scrollbar-button {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+
+  background: transparent !important;
+}
+
+
+/*
+   Explicitly target vertical start/end buttons as well.
+*/
+
+*::-webkit-scrollbar-button:vertical:start:decrement,
+*::-webkit-scrollbar-button:vertical:end:increment,
+*::-webkit-scrollbar-button:vertical:start:increment,
+*::-webkit-scrollbar-button:vertical:end:decrement {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/*
+   Same treatment for horizontal scrollbars.
+*/
+
+*::-webkit-scrollbar-button:horizontal:start:decrement,
+*::-webkit-scrollbar-button:horizontal:end:increment,
+*::-webkit-scrollbar-button:horizontal:start:increment,
+*::-webkit-scrollbar-button:horizontal:end:decrement {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/* Bottom-right corner where two scrollbars meet */
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
